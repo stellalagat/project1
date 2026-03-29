@@ -27,7 +27,7 @@ export default function Analytics() {
 
         <div className="bg-white p-5 rounded-2xl shadow-sm border">
           <h2 className="text-gray-500">Total Tasks</h2>
-          <p className="text-2xl text-gray-500 font-bold">{total}</p>
+          <p className="text-2xl text font-bold">{total}</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl shadow-sm border">
