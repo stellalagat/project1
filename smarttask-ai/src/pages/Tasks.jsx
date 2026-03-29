@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTasks, saveTasks } from "../utils/taskLogic";
+import DashboardCharts from "../components/DashboardCharts";
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -113,6 +114,7 @@ export default function Tasks() {
       <h1 className="text-3xl font-bold text-blue-700">
         Tasks Manager
       </h1>
+      <DashboardCharts tasks={tasks} />
 
       {/* STATS */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
