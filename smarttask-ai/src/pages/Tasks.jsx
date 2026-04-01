@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTasks, saveTasks } from "../utils/taskLogic";
 import DashboardCharts from "../components/DashboardCharts";
+import { useRef } from "react";
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -36,20 +37,21 @@ export default function Tasks() {
       });
     }
   };
+const notifiedTasks = useRef(new Set());
+ 
 
-  // PREVENT SPAM NOTIFICATIONS (simple memory tracker)
-  const notifiedTasks = new Set();
+ useEffect(() => {
+  if (!tasks.length) return;
 
-  useEffect(() => {
-    tasks.forEach((task) => {
-      const overdue = isOverdue(task.dueDate, task.completed);
+  tasks.forEach((task) => {
+    const overdue = isOverdue(task.dueDate, task.completed);
 
-      if (overdue && !task.completed && !notifiedTasks.has(task.id)) {
-        showNotification(task.title);
-        notifiedTasks.add(task.id);
-      }
-    });
-  }, [tasks]);
+    if (overdue && !task.completed && !notifiedTasks.current.has(task.id)) {
+      showNotification(task.title);
+      notifiedTasks.current.add(task.id);
+    }
+  });
+}, [tasks]);
 
   // STATS (optional but included since your app already has it)
   const totalTasks = tasks.length;
@@ -115,7 +117,9 @@ export default function Tasks() {
         Tasks Manager
       </h1>
       <DashboardCharts tasks={tasks} />
-
+<p className="text-gray-500">
+  Smart task tracking with priority, deadlines, and smart alerts
+</p>
       {/* STATS */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
 
@@ -187,10 +191,10 @@ export default function Tasks() {
         {tasks.map((task) => (
           <div
             key={task.id}
-            className={`p-4 rounded-xl border shadow-sm flex justify-between items-center hover:shadow-md transition
-              ${getPriorityStyle(task.priority)}
-              ${isOverdue(task.dueDate, task.completed) ? "border-red-600 bg-red-100" : ""}
-            `}
+          className={`p-4 rounded-xl border shadow-sm flex justify-between items-center hover:shadow-md transition
+  ${getPriorityStyle(task.priority)}
+  ${isOverdue(task.dueDate, task.completed) ? "border-red-600 bg-red-100" : ""}
+`} 
           >
 
             {/* LEFT SIDE */}

@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import mongoose from "mongoose";
 
 // Load environment variables
 dotenv.config();
@@ -9,7 +10,12 @@ dotenv.config();
 // Connect to MongoDB
 connectDB();
 
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
+  
 const app = express();
+
 
 // Middleware
 app.use(cors());
