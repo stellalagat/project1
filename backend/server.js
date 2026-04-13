@@ -2,20 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
-import mongoose from "mongoose";
 
-// Load environment variables
+// Load env variables
 dotenv.config();
 
-// Connect to MongoDB
+// Connect to MongoDB (ONLY ONCE)
 connectDB();
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
-  
 const app = express();
-
 
 // Middleware
 app.use(cors());
@@ -29,7 +23,6 @@ app.get("/", (req, res) => {
 // PORT
 const PORT = process.env.PORT || 5000;
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
