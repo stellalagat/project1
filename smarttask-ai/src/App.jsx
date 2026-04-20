@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
@@ -11,7 +12,7 @@ import Analytics from "./pages/Analytics";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
-
+  const [token, setToken] = useState("");
   return (
     <div
       className={

@@ -11,7 +11,9 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
+const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json());
 
