@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import { useState, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
