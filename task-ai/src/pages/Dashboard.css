@@ -1,0 +1,24 @@
+.filters {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.filters button {
+  padding: 8px 14px;
+  background: #1e293b;
+  border: none;
+  color: #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: #334155;
+}
+
+/* ACTIVE FILTER */
+.active-filter {
+  background: #3b82f6 !important;
+  color: white !important;
+}

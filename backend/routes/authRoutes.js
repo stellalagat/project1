@@ -1,9 +1,25 @@
 import express from "express";
-import { registerUser, loginUser } from "../controllers/authController.js";
+import {
+  registerUser,
+  loginUser,
+  getMe,
+  updateProfile
+} from "../controllers/authController.js";
+
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+// REGISTER
 router.post("/register", registerUser);
+
+// LOGIN
 router.post("/login", loginUser);
 
-export default router; // ✅ THIS LINE MUST EXIST
+// GET LOGGED-IN USER
+router.get("/me", protect, getMe);
+
+// UPDATE PROFILE
+router.put("/me", protect, updateProfile);
+
+export default router;

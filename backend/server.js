@@ -11,12 +11,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const dns = require("dns");
-dns.setDefaultResultOrder("ipv4first");
-const mongoose = require("mongoose");
+
 app.use(cors());
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api/auth", authRoutes); // ✅ ADD THIS
 app.use("/api/tasks", taskRoutes);

@@ -1,0 +1,67 @@
+/* wrapper */
+.notification-wrapper {
+  position: relative;
+}
+
+/* bell */
+.notification-bell {
+  position: relative;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* unread badge */
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+/* dropdown panel */
+.notification-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 280px;
+  max-height: 350px;
+  overflow-y: auto;
+
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 100;
+}
+
+/* title */
+.notification-dropdown h4 {
+  margin-bottom: 10px;
+}
+
+/* item */
+.notification-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.notification-item:hover {
+  background: #f3f4f6;
+}
+
+/* unread */
+.notification-item.read {
+  opacity: 0.6;
+}
+
+/* empty */
+.empty {
+  text-align: center;
+  color: gray;
+}
